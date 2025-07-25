@@ -1,0 +1,21 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Payment Successful</h1>
+{% if payment %}
+    <p>Thank you for your purchase!</p>
+    <ul>
+        <li>Product: {{ payment.product.name }}</li>
+        <li>Amount: KSH {{ payment.amount }}</li>
+        <li>Status: {{ payment.status }}</li>
+        {% if payment.stripe_session_id %}
+            <li>Stripe Session ID: {{ payment.stripe_session_id }}</li>
+        {% elif payment.transaction_id %}
+            <li>M-Pesa Transaction ID: {{ payment.transaction_id }}</li>
+        {% endif %}
+        <li>Date: {{ payment.created_at }}</li>
+    </ul>
+{% else %}
+    <p>Your payment was successful, but details are not available.</p>
+{% endif %}
+<a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+{% endblock %}

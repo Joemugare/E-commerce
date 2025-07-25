@@ -1,0 +1,14 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ product.name }}</h1>
+    {% if product.thumbnail %}
+        <img src="{{ product.thumbnail.url }}" class="img-fluid mb-3" alt="{{ product.name }}">
+    {% endif %}
+    <p>{{ product.description }}</p>
+    {% for price in product.price_set.all %}
+        <p><strong>Price:</strong> KSH {{ price.price }}</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\store\\static",
+    "\\store\\static\\store",
+    "\\store\\static\\store\\css",
+    "\\store\\templates",
+    "\\store\\templates\\store",
+    "\\store\\templatetags",
+    "\\store_project"
+  ],
+  "SelectedNode": "\\Dockerfile",
+  "PreviewInSolutionExplorer": false
+}
