@@ -4,3 +4,7 @@ myvenv/
 .env
 staticfiles/
 media/
+.vs/
+*.vsidx
+*.sqlite
+*.json
