@@ -1,28 +1,15 @@
-from django.urls import path, include
-from .views import BrandDetail, BrandList, ProductList, ProductDetail, CategoryList, prodcut_list
-from . import api
-app_name = 'products'
-from rest_framework import routers
-router = routers.DefaultRouter()
-router.register('all-products',api.ProductViewSetsAPI)
-app_name = 'products'
+﻿from django.urls import path
+from . import views
 
+app_name = 'products'
 
 urlpatterns = [
-    path('' , ProductList.as_view() , name='product_list'),
-    path('<int:pk>/',ProductDetail.as_view() , name='product_detail' ),
-    path('brands/' , BrandList.as_view() , name='brand_list'),
-    path('brands/<int:pk>/',BrandDetail.as_view() , name='brand_detail' ),
-    path('category/',CategoryList.as_view(),name = 'category_list'),
-    path('testing/', prodcut_list  ),
+    path('index/', views.index, name='index'),  # Optional home/index route
+    path('', views.product_list, name='product_list'),  # List all products
+    path('<int:pk>/', views.product_detail, name='product_detail'),  # Single product
 
-    path('api/products/<int:pk>',api.ProductDetailAPI.as_view()),
-    path('api/products/',api.ProductListAPI.as_view()),
-    path('api/brand/', api.BrandListAPI.as_view()),
-    path('api/brand/<int:pk>', api.BrandDetailAPI.as_view()),
-    path('api/category/',api.CategoryListAPI.as_view()),
-    path('api/category/<int:pk>',api.CategoryDetailAPI.as_view()),
+    path('brands/', views.brand_list, name='brand_list'),  # List all brands
+    path('brands/<int:pk>/', views.brand_detail, name='brand_detail'),  # Brand detail
 
-    path('api/', include(router.urls))
-
+    path('categories/', views.category_list, name='category_list'),  # Category list
 ]

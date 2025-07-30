@@ -1,4 +1,4 @@
-"""project URL Configuration
+﻿"""project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,6 +15,7 @@ Including another URLconf
 """
 from itertools import product
 from django.contrib import admin
+from django.shortcuts import redirect  # Add this import at the top
 from django.urls import path , include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,12 +26,14 @@ from rest_framework_simplejwt.views import (
 )
 
 urlpatterns = [
+    path('', lambda request: redirect('products/', permanent=False)),  # 👈 This is the fix
     path('admin/', admin.site.urls),
-    path('products/' , include('products.urls', namespace = 'products')),
+    path('products/', include('products.urls', namespace='products')),
     path('__debug__/', include('debug_toolbar.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

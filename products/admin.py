@@ -1,33 +1,17 @@
-from unicodedata import category
 from django.contrib import admin
-import site
-from .models import Product,Brand,Category,ProductImages,ProductReview
+from .models import Product, Brand, Category
 
-class ProductImageTabular(admin.TabularInline):
-    model = ProductImages
-
-class ProductTabular(admin.TabularInline):
-    model = Product
-    fields = ['name']
-
-class BrandTabular(admin.TabularInline):
-    model = Brand
-
-class ProductImageAdmin(admin.ModelAdmin):
-    inlines = [ProductImageTabular]
-    list_display = ['name', 'flag', 'quantity', 'price']
-    list_filter = ['flag','quantity']
-    search_fields = ['name' , 'desc' , 'subtitle']
-
-class BrandAdmin(admin.ModelAdmin):
-    inlines = [BrandTabular]
-
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    inlines = [ProductTabular]  
+    list_display = ['name', 'price', 'brand', 'category']  # Include fields as needed
+    search_fields = ['name']
 
-# Register your models here.
-admin.site.register(Product,ProductImageAdmin)
-admin.site.register(Brand,ProductAdmin)
-admin.site.register(ProductImages)
-admin.site.register(Category,BrandAdmin)
-admin.site.register(ProductReview)
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']

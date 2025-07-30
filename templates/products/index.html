@@ -1,0 +1,9 @@
+{% load static %}
+
+{% block content %}
+    <h1>Welcome to Transdigital System</h1>
+    <p>Contact us at <a href="mailto:Transdigitalke@gmail.com">Transdigitalke@gmail.com</a> or +254720957180</p>
+    <a href="{% url 'products:product_list' %}">Home</a>
+    <a href="{% url 'products:category_list' %}">Categories</a>
+    <a href="{% url 'products:brand_list' %}">Brands</a>
+{% endblock %}

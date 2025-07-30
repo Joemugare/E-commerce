@@ -1,78 +1,35 @@
-from __future__ import annotations
-from itertools import product
-from multiprocessing import get_context
-from unicodedata import category
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from .models import Product ,Brand, Category ,ProductImages 
-from django.db.models.aggregates import Count
-from django.db.models import Value ,F
-from django.core.paginator import Paginator
+﻿from django.shortcuts import render, get_object_or_404
+from .models import Product, Brand, Category  # Ensure models exist
 
-# Create your views here.
+# Homepage or intro view
+def index(request):
+    return render(request, 'products/index.html')
 
-# Function Based View
-def prodcut_list(request):
-    # products = Product.objects.all()                                  # All products with out filter
-    # products = Product.objects.filter(price__lte = 50 )               # greater than or equal 
-    # products = Product.objects.filter(price__gte = 50 )               # less than or equal
-    # products = Product.objects.filter(price__gt = 50 )                # greater than
-    # products = Product.objects.filter(price__lt = 50 )                # less than
-    
-    products = Product.objects.filter(price__gt = 50 )
+# List all products
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'products/product_list.html', {'products': products})
 
-    # Show 25 products per page.
-    paginator = Paginator(products, 25) 
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+# Single product detail
+def product_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'products/product_detail.html', {'product': product})
 
+# List all brands
+def brand_list(request):
+    brands = Brand.objects.all()
+    return render(request, 'products/brand_list.html', {'brands': brands})
 
-    return render(request, 'products/product_list_test.html', { 'products':products , 'page_obj': page_obj })
+# Single brand detail with related products
+def brand_detail(request, pk):
+    brand = get_object_or_404(Brand, pk=pk)
+    products = Product.objects.filter(brand=brand)
+    return render(request, 'products/brand_detail.html', {
+        'brand': brand,
+        'products': products
+    })
 
-# Class Based View  
-class ProductList(ListView):
-    model = Product
-    paginate_by = 24
-    # ListView ^-^
-    # context  -> product_list or object_list
-    # templete -> must named -> product_list.html 
-
-class ProductDetail(DetailView):
-    model= Product
-
-    # DetailView ^-^
-    # context  -> product_detail or object_detail
-    # templete -> must named -> product_detail.html 
-
-
-class BrandList(ListView):
-    model = Brand
-   
-
-    # override get_context_data with other context  
-    def get_context_data(self, **kwargs):
-        # we use super() funtion to run the two methods -first in ListView, -second on BrandList ( in this class )
-        context = super().get_context_data(**kwargs)
-        context["categories"] = Category.objects.all
-        # select_related() to prevent doing more queirs for each category 
-        context["brand_list"] = Brand.objects.select_related('category').all().annotate(
-            product_count=Count('product_brand'))
-        return context
-    
-
-
-class BrandDetail(DetailView):
-    model = Brand 
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        brand = self.get_object()
-        context['product_brand'] = Product.objects.filter(brand=brand)
-        context['number'] = brand.product_count()
-        return context
-    
-
-
-class CategoryList(ListView):
-    model = Category
-    
+# List all categories
+def category_list(request):
+    categories = Category.objects.all()
+    return render(request, 'products/category_list.html', {'categories': categories})

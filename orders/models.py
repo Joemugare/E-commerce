@@ -1,65 +1,54 @@
-from pyexpat import model
 from django.db import models
-from utils.generate_code import generate_code
-from django.contrib.auth.models import User
-from django.utils import timezone
-from products.models import Product
 
-# Create your models here.
-CART_STATUS=(
-    ('Inprogress','Inprogress'),
-    ('Completed','Completed'),
-)
+class Category(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Category Name")
 
-class Cart(models.Model):
-    code = models.CharField(max_length=8,default=generate_code)
-    user = models.ForeignKey(User,related_name='user_cart',on_delete=models.CASCADE)
-    status = models.CharField(max_length=15 , choices=CART_STATUS)
+    def __str__(self):
+        return self.name
 
-    def ___str__(self):
-        return self.code
-
-    def get_total(self):
-        total = 0
-        for product in self.cart_detail.all():
-            total += product.total
-        return total
-    
-    
-class CartDetail(models.Model):
-    order = models.ForeignKey(Cart,related_name='cart_detail',on_delete=models.CASCADE)
-    product = models.ForeignKey(Product,related_name='cart_product',on_delete=models.SET_NULL , null=True,blank=True)
-    price = models.FloatField()
-    quanitity = models.IntegerField()
-    total = models.FloatField(null=True,blank=True)
-
-    def ___str__(self):
-        return str(self.order)
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
 
+class Brand(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Brand Name")
 
-ORDER_STATUS=(
-    ('recieved','recieved'),
-    ('processed','processed'),
-    ('shipped','shipped'),
-    ('delivered','delivered'),
-)
+    def __str__(self):
+        return self.name
 
-class Order(models.Model):
-    code = models.CharField(max_length=8,default=generate_code)
-    user = models.ForeignKey(User,related_name='user_order',on_delete=models.CASCADE)
-    status = models.CharField(max_length=15 , choices=ORDER_STATUS)
-    order_time = models.DateTimeField(default=timezone.now)
-    delivery_time = models.DateTimeField(null=True,blank=True)
-    
-    def ___str__(self):
-        return self.code
-    
-class OrderDetail(models.Model):
-    order = models.ForeignKey(Order,related_name='order_detail',on_delete=models.CASCADE)
-    product = models.ForeignKey(Product,related_name='order_product',on_delete=models.SET_NULL , null=True,blank=True)
-    price = models.FloatField()
-    quanitity = models.IntegerField()
+    class Meta:
+        verbose_name = "Brand"
+        verbose_name_plural = "Brands"
 
-    def ___str__(self):
-        return str(self.order)
+
+class Product(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Product Name")
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Price")
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='products', verbose_name="Brand")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', verbose_name="Category")
+    image = models.ImageField(upload_to='products/', null=True, blank=True, verbose_name="Product Image")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
+
+
+class CartItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_items')
+    quantity = models.PositiveIntegerField(default=1, verbose_name="Quantity")
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True, blank=True, verbose_name="User")
+
+    @property
+    def total_price(self):
+        return self.product.price * self.quantity
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name}"
+
+    class Meta:
+        verbose_name = "Cart Item"
+        verbose_name_plural = "Cart Items"
