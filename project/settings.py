@@ -23,7 +23,7 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'e-commerce-lnol.onrender.com',
+    'transdigitalsystem.it.com',
 ]
 
 # Application definition
