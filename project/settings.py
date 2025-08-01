@@ -110,20 +110,23 @@ TIME_ZONE = 'Africa/Nairobi'  # Matches EAT
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Static files
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Media files (Uploads)
+# Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+if os.getenv('RENDER') == 'true':
+    MEDIA_ROOT = '/app/media'  # For Render Disks
+else:
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Debug Toolbar (only active when DEBUG=True)
+# Debug Toolbar
 INTERNAL_IPS = ['127.0.0.1']
 
 # REST Framework settings
@@ -138,7 +141,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
 }
 
-# Security settings for production
+# Security settings
 SECURE_SSL_REDIRECT = not DEBUG
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
