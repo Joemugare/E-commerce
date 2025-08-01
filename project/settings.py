@@ -23,32 +23,29 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'e-commerce-lnol.onrender.com',  # Render domain
+    'e-commerce-lnol.onrender.com',
 ]
 
 # Application definition
 INSTALLED_APPS = [
-    # Django core apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Third-party apps
     'taggit',
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
-    # Your apps
     'products',
     'orders',
     'accounts',
     'settings',
 ]
 
-# Conditionally add debug_toolbar only in DEBUG mode
+# Conditionally add debug_toolbar
 if DEBUG:
     INSTALLED_APPS.append('debug_toolbar')
 
@@ -63,7 +60,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Conditionally add debug_toolbar middleware only in DEBUG mode
 if DEBUG:
     MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
@@ -110,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'Africa/Nairobi'  # Matches EAT for your location
+TIME_ZONE = 'Africa/Nairobi'  # Matches EAT
 USE_I18N = True
 USE_TZ = True
 
@@ -118,7 +114,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # For production
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files (Uploads)
 MEDIA_URL = '/media/'
@@ -143,9 +139,9 @@ REST_FRAMEWORK = {
 }
 
 # Security settings for production
-SECURE_SSL_REDIRECT = not DEBUG  # Redirect HTTP to HTTPS in production
-SESSION_COOKIE_SECURE = not DEBUG  # Use secure cookies in production
-CSRF_COOKIE_SECURE = not DEBUG  # Use secure CSRF cookies in production
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 
