@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-un68y966!@pvfid33@=+4681i5+y$2@fj53z50n2!@(3r743+&')
 
 # SECURITY WARNING: Don't run with debug turned on in production!
-DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'False'
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
 # Allowed hosts for production
 ALLOWED_HOSTS = [
@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Third-party apps
     'taggit',
-    'debug_toolbar',
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
@@ -49,16 +48,24 @@ INSTALLED_APPS = [
     'settings',
 ]
 
+# Conditionally add debug_toolbar only in DEBUG mode
+if DEBUG:
+    INSTALLED_APPS.append('debug_toolbar')
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # For static file serving
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',  # Debug toolbar (only in DEBUG mode)
 ]
+
+# Conditionally add debug_toolbar middleware only in DEBUG mode
+if DEBUG:
+    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
 ROOT_URLCONF = 'project.urls'
 
@@ -103,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'Africa/Nairobi'  # Updated to match your timezone (EAT)
+TIME_ZONE = 'Africa/Nairobi'  # Matches EAT for your location
 USE_I18N = True
 USE_TZ = True
 
@@ -111,6 +118,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # For production
 
 # Media files (Uploads)
 MEDIA_URL = '/media/'
