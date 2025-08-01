@@ -13,6 +13,6 @@ flet==0.28.3
 django-debug-toolbar==4.4.6
 django-taggit==5.0.1
 djangorestframework==3.15.2
-django-filter>=23.5
-djangorestframework-simplejwt
+django-filter==23.5
+djangorestframework-simplejwt==5.3.1
 setuptools>=65.5.0

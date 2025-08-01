@@ -1,36 +1,42 @@
-FROM python:3.12-slim
+﻿version: "3.9"
 
-# Environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+services:
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: store_project
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Qunta729    # 🔐 move to .env in production
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
-# Set working directory
-WORKDIR /app
+  web:
+    build: .
+    container_name: django_web
+    command: >
+      sh -c "
+        python manage.py makemigrations &&
+        python manage.py migrate &&
+        gunicorn store_project.wsgi:application --bind 0.0.0.0:8000
+      "
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    gcc \
-    libpq-dev \
-    libffi-dev \
-    libssl-dev \
-    curl \
-    libjpeg-dev \
-    zlib1g-dev \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Configure pip
-RUN pip config set global.index-url https://pypi.org/simple
-RUN python -m pip install --default-timeout=100 --upgrade pip setuptools wheel
-
-# Install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir --default-timeout=100 -r requirements.txt
-
-# Copy project files
-COPY . .
-
-# Collect static files for whitenoise
-RUN python manage.py collectstatic --noinput
-
-# Run development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+volumes:
+  pgdata:
