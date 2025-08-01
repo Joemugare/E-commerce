@@ -1,107 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
 
-    {% extends 'base.html' %}
-    {% load static %}
-    {% block css %}
-        <link rel="stylesheet" href="{% static 'css/all-category.css' %}">
-    {% endblock css %}
-       
-    {% block body %}
-        <!--=====================================
-                    BANNER PART START
-        =======================================-->
-        <section class="inner-section single-banner" style="background:url({% static 'images/single-banner.jpg' %}) no-repeat center;">
-            <div class="container">
-                <h2>all category</h2>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">all-category</li>
-                </ol>
-            </div>
-        </section>
-        <!--=====================================
-                    BANNER PART END
-        =======================================-->
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/all-category.css' %}">
+{% endblock css %}
 
+{% block body %}
+    <!--=====================================
+                BANNER PART START
+    =======================================-->
+    <section class="inner-section single-banner" style="background: url({% static 'images/single-banner.jpg' %}) no-repeat center;">
+        <div class="container">
+            <h2>All Categories</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'products:index' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Categories</li>
+            </ol>
+        </div>
+    </section>
+    <!--=====================================
+                BANNER PART END
+    =======================================-->
 
-        <!--=====================================
-                    CATEGORY PART START
-        =======================================-->
-        <section class="inner-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="top-filter">
-                            <div class="filter-show">
-                                <label class="filter-label">Show :</label>
-                                <select class="form-select filter-select">
-                                    <option value="1">12</option>
-                                    <option value="2">24</option>
-                                    <option value="3">36</option>
-                                </select>
-                            </div>
-                            <div class="filter-short">
-                                <label class="filter-label">Short by :</label>
-                                <select class="form-select filter-select">
-                                    <option selected>default</option>
-                                    <option value="3">trending</option>
-                                    <option value="1">featured</option>
-                                    <option value="2">recommend</option>
-                                </select>
-                            </div>
+    <!--=====================================
+                CATEGORY PART START
+    =======================================-->
+    <section class="inner-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="top-filter">
+                        <div class="filter-show">
+                            <label class="filter-label">Show :</label>
+                            <select class="form-select filter-select" onchange="window.location.href='{% url 'products:category_list' %}?show='+this.value+'{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}'">
+                                <option value="12" {% if request.GET.show == '12' %}selected{% endif %}>12</option>
+                                <option value="24" {% if request.GET.show == '24' %}selected{% endif %}>24</option>
+                                <option value="36" {% if request.GET.show == '36' %}selected{% endif %}>36</option>
+                            </select>
+                        </div>
+                        <div class="filter-short">
+                            <label class="filter-label">Sort by :</label>
+                            <select class="form-select filter-select" onchange="window.location.href='{% url 'products:category_list' %}?sort='+this.value+'{% if request.GET.show %}&show={{ request.GET.show }}{% endif %}'">
+                                <option value="default" {% if request.GET.sort == 'default' %}selected{% endif %}>default</option>
+                                <option value="name" {% if request.GET.sort == 'name' %}selected{% endif %}>name</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 justify-content-center">
-                    {% for category in category_list %}
+            </div>
+            <p>Debug: {{ categories|length }} categories found.</p>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 justify-content-center">
+                {% for category in categories %}
                     <div class="col">
                         <div class="category-wrap">
-                            <div class="category-media">
-                                <img src="{{category.image.url}}" alt="category">
-                                <div class="category-overlay">
-                                    <a href="shop-3column.html"><i class="fas fa-link"></i></a>
-                                </div>
-                            </div>
                             <div class="category-meta">
-                                <h4>{{category}}</h4>
-                                <p>(25 items)</p>
+                                <h4><a href="{% url 'products:product_list' %}?category={{ category.id }}">{{ category.name }}</a></h4>
+                                <p>({{ category.product_set.count }} items)</p>
                             </div>
                         </div>
                     </div>
+                {% empty %}
+                    <p>No categories available at the moment.</p>
                 {% endfor %}
-
-                </div>
+            </div>
+            {% if page_obj.is_paginated %}
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bottom-paginate">
-                            <p class="page-info">Showing 12 of 60 Results</p>
+                            <p class="page-info">Showing {{ page_obj.object_list|length }} of {{ page_obj.paginator.count }} Categories</p>
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#">
-                                        <i class="fas fa-long-arrow-alt-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">...</li>
-                                <li class="page-item"><a class="page-link" href="#">60</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">
-                                        <i class="fas fa-long-arrow-alt-right"></i>
-                                    </a>
-                                </li>
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.show %}&show={{ request.GET.show }}{% endif %}">
+                                            <i class="fas fa-long-arrow-alt-left"></i>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li><i class="fas fa-long-arrow-alt-left disabled"></i></li>
+                                {% endif %}
+                                {% for i in page_obj.paginator.page_range %}
+                                    {% if page_obj.number == i %}
+                                        <li class="page-item"><a class="page-link active" href="?page={{ i }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.show %}&show={{ request.GET.show }}{% endif %}">{{ i }}</a></li>
+                                    {% else %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ i }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.show %}&show={{ request.GET.show }}{% endif %}">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.show %}&show={{ request.GET.show }}{% endif %}">
+                                            <i class="fas fa-long-arrow-alt-right"></i>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li><i class="fas fa-long-arrow-alt-right disabled"></i></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
                 </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-btn-25">
+                        <a href="{% url 'products:product_list' %}" class="btn btn-outline">
+                            <i class="fas fa-eye"></i>
+                            <span>View All Products</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </section>
-        <!--=====================================
-                    CATEGORY PART END
-        =======================================-->
-
+        </div>
+    </section>
+    <!--=====================================
+                CATEGORY PART END
+    =======================================-->
 {% endblock body %}
-
-
-
-

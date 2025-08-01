@@ -1,6 +1,5 @@
-from distutils import text_file
+from setuptools._distutils import text_file
 import email
-from tkinter.tix import Tree
 from unicodedata import name
 from django.db import models
 from django.utils.translation import gettext as _

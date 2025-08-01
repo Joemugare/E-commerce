@@ -1,17 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\accounts\\migrations\\__pycache__",
-    "\\media\\settings",
-    "\\media\\settings\\company",
-    "\\orders\\__pycache__",
-    "\\products",
-    "\\products\\migrations",
-    "\\products\\migrations\\__pycache__",
-    "\\products\\__pycache__",
-    "\\templates",
-    "\\templates\\products"
+    ""
   ],
-  "SelectedNode": "\\templates\\base.html",
   "PreviewInSolutionExplorer": false
 }

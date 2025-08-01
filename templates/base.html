@@ -1,98 +1,77 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!--=====================================
-                    META TAG PART START
-        =======================================-->
-    <!-- REQUIRE META -->
+                META TAG PART START
+    =======================================-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- AUTHOR META -->
     <meta name="author" content="Transdigital System">
     <meta name="email" content="Transdigitalke@gmail.com">
     <meta name="profile" content="https://transdigitalsystem.com">
-
-    <!-- TEMPLATE META -->
     <meta name="name" content="Transdigital System">
     <meta name="title" content="Transdigital System - Hospital Product eCommerce">
     <meta name="keywords"
         content="hospital products, medical supplies, healthcare, ecommerce, store, html, bootstrap, template, medical equipment, surgical tools, diagnostics, pharmacy, online store">
-
     <!--=====================================
-                    META-TAG PART END
-        =======================================-->
-
-    <!-- WEBPAGE TITLE -->
-    <title>Home - Transdigital System</title>
-
+                META-TAG PART END
+    =======================================-->
+    <title>Transdigital System</title>
     <!--=====================================
-                    CSS LINK PART START
-        =======================================-->
-    <!-- FAVICON -->
+                CSS LINK PART START
+    =======================================-->
     <link rel="icon" href="{% static 'images/favicon-hospital.png' %}">
-
-    <!-- FONTS -->
     <link rel="stylesheet" href="{% static 'fonts/flaticon/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/icofont/icofont.min.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/fontawesome/fontawesome.min.css' %}">
-
-    <!-- VENDOR -->
     <link rel="stylesheet" href="{% static 'vendor/venobox/venobox.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/slickslider/slick.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/niceselect/nice-select.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}">
-
-    <!-- CUSTOM -->
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     {% block css %}
         <link rel="stylesheet" href="{% static 'css/index-hospital.css' %}">
     {% endblock css %}
     <!--=====================================
-                    CSS LINK PART END
-        =======================================-->
+                CSS LINK PART END
+    =======================================-->
 </head>
-
 <body>
     <div class="backdrop"></div>
     <a class="backtop fas fa-arrow-up" href="#"></a>
 
     <!--=====================================
-                    HEADER PART START
-        =======================================-->
+                HEADER PART START
+    =======================================-->
     <header class="header-part">
         <div class="container">
             <div class="header-content">
                 <div class="header-media-group">
                     <button class="header-user"><img src="{% static 'images/user.png' %}" alt="user"></button>
-                    <a href="{% url 'products:product_list' %}"><img src="{% static 'images/TG logo.png' %}" alt="TG Logo"></a>
+                    <a href="{% url 'products:index' %}"><img src="{% static 'images/TG logo.png' %}" alt="TG Logo"></a>
                     <button class="header-src"><i class="fas fa-search"></i></button>
                 </div>
-
-                <a href="{% url 'products:product_list' %}" class="header-logo">
+                <a href="{% url 'products:index' %}" class="header-logo">
                     <img src="{% static 'images/TG logo.png' %}" alt="TG Logo">
                 </a>
                 <a href="#" class="header-widget" title="My Account">
                     <img src="{% static 'images/user.png' %}" alt="user">
                     <span>Sign In</span>
-                </a> <!-- Placeholder: Add login URL pattern -->
-
+                </a>
                 <form class="header-form">
                     <input type="text" placeholder="Search medical products...">
                     <button><i class="fas fa-search"></i></button>
                 </form>
-
                 <div class="header-widget-group">
                     <a href="#" class="header-widget" title="Compare List">
                         <i class="fas fa-random"></i>
                         <sup>0</sup>
-                    </a> <!-- Placeholder: Add compare URL pattern -->
+                    </a>
                     <a href="#" class="header-widget" title="Wishlist">
                         <i class="fas fa-heart"></i>
                         <sup>0</sup>
-                    </a> <!-- Placeholder: Add wishlist URL pattern -->
+                    </a>
                     <button class="header-widget header-cart" title="Cart">
                         <i class="fas fa-shopping-basket"></i>
                         {% if cart_item_count > 0 %}
@@ -108,18 +87,21 @@
         </div>
     </header>
     <!--=====================================
-                    HEADER PART END
-        =======================================-->
+                HEADER PART END
+    =======================================-->
 
     <!--=====================================
-                    NAVBAR PART START
-        =======================================-->
+                NAVBAR PART START
+    =======================================-->
     <nav class="navbar-part">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="navbar-content">
                         <ul class="navbar-list">
+                            <li class="navbar-item">
+                                <a class="navbar-link" href="{% url 'products:index' %}">Home</a>
+                            </li>
                             <li class="navbar-item dropdown">
                                 <a class="navbar-link" href="{% url 'products:product_list' %}">Medical Products</a>
                             </li>
@@ -128,66 +110,20 @@
                                 <div class="megamenu">
                                     <div class="container megamenu-scroll">
                                         <div class="row row-cols-5">
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Surgical Equipment</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Surgical Instruments</a></li>
-                                                        <li><a href="#">Operating Tables</a></li>
-                                                        <li><a href="#">Sterilization Equipment</a></li>
-                                                        <li><a href="#">Surgical Lights</a></li>
-                                                        <li><a href="#">Anesthesia Machines</a></li>
-                                                    </ul>
+                                            {% for category in categories %}
+                                                <div class="col">
+                                                    <div class="megamenu-wrap">
+                                                        <h5 class="megamenu-title">{{ category.name }}</h5>
+                                                        <ul class="megamenu-list">
+                                                            <li><a href="{% url 'products:product_list' %}?category={{ category.id }}">View Products</a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Diagnostic Tools</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Ultrasound Machines</a></li>
-                                                        <li><a href="#">X-Ray Machines</a></li>
-                                                        <li><a href="#">Blood Pressure Monitors</a></li>
-                                                        <li><a href="#">ECG Machines</a></li>
-                                                        <li><a href="#">Thermometers</a></li>
-                                                    </ul>
+                                            {% empty %}
+                                                <div class="col">
+                                                    <p>No categories available.</p>
                                                 </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Patient Care</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Hospital Beds</a></li>
-                                                        <li><a href="#">Wheelchairs</a></li>
-                                                        <li><a href="#">IV Stands</a></li>
-                                                        <li><a href="#">Patient Monitors</a></li>
-                                                        <li><a href="#">Medical Carts</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Pharmacy Supplies</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Medications</a></li>
-                                                        <li><a href="#">Syringes & Needles</a></li>
-                                                        <li><a href="#">Bandages & Dressings</a></li>
-                                                        <li><a href="#">First Aid Kits</a></li>
-                                                        <li><a href="#">Disinfectants</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Lab Equipment</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Microscopes</a></li>
-                                                        <li><a href="#">Centrifuges</a></li>
-                                                        <li><a href="#">Incubators</a></li>
-                                                        <li><a href="#">Pipettes</a></li>
-                                                        <li><a href="#">Test Kits</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                 </div>
@@ -196,7 +132,7 @@
                                 <a class="navbar-link" href="{% url 'products:brand_list' %}">Brands</a>
                             </li>
                             <li class="navbar-item dropdown">
-                                <a class="navbar-link" href="#">Orders</a> <!-- Placeholder: Add orders URL pattern -->
+                                <a class="navbar-link" href="#">Orders</a>
                             </li>
                         </ul>
                         <div class="navbar-info-group">
@@ -221,12 +157,12 @@
         </div>
     </nav>
     <!--=====================================
-                    NAVBAR PART END
-        =======================================-->
+                NAVBAR PART END
+    =======================================-->
 
     <!--=====================================
                 CATEGORY SIDEBAR PART START
-        =======================================-->
+    =======================================-->
     <aside class="category-sidebar">
         <div class="category-header">
             <h4 class="category-title">
@@ -236,73 +172,33 @@
             <button class="category-close"><i class="icofont-close"></i></button>
         </div>
         <ul class="category-list">
-            <li class="category-item">
-                <a class="category-link dropdown-link" href="#">
-                    <i class="flaticon-medical"></i>
-                    <span>Surgical Equipment</span>
-                </a>
-                <ul class="dropdown-list">
-                    <li><a href="#">Surgical Instruments</a></li>
-                    <li><a href="#">Operating Tables</a></li>
-                    <li><a href="#">Sterilization Equipment</a></li>
-                </ul>
-            </li>
-            <li class="category-item">
-                <a class="category-link dropdown-link" href="#">
-                    <i class="flaticon-stethoscope"></i>
-                    <span>Diagnostic Tools</span>
-                </a>
-                <ul class="dropdown-list">
-                    <li><a href="#">Ultrasound Machines</a></li>
-                    <li><a href="#">X-Ray Machines</a></li>
-                    <li><a href="#">ECG Machines</a></li>
-                </ul>
-            </li>
-            <li class="category-item">
-                <a class="category-link dropdown-link" href="#">
-                    <i class="flaticon-hospital-bed"></i>
-                    <span>Patient Care</span>
-                </a>
-                <ul class="dropdown-list">
-                    <li><a href="#">Hospital Beds</a></li>
-                    <li><a href="#">Wheelchairs</a></li>
-                    <li><a href="#">Patient Monitors</a></li>
-                </ul>
-            </li>
-            <li class="category-item">
-                <a class="category-link dropdown-link" href="#">
-                    <i class="flaticon-pharmacy"></i>
-                    <span>Pharmacy Supplies</span>
-                </a>
-                <ul class="dropdown-list">
-                    <li><a href="#">Medications</a></li>
-                    <li><a href="#">Syringes & Needles</a></li>
-                    <li><a href="#">Bandages</a></li>
-                </ul>
-            </li>
-            <li class="category-item">
-                <a class="category-link dropdown-link" href="#">
-                    <i class="flaticon-microscope"></i>
-                    <span>Lab Equipment</span>
-                </a>
-                <ul class="dropdown-list">
-                    <li><a href="#">Microscopes</a></li>
-                    <li><a href="#">Centrifuges</a></li>
-                    <li><a href="#">Test Kits</a></li>
-                </ul>
-            </li>
+            {% for category in categories %}
+                <li class="category-item">
+                    <a class="category-link" href="{% url 'products:product_list' %}?category={{ category.id }}">
+                        <i class="flaticon-medical"></i>
+                        <span>{{ category.name }}</span>
+                    </a>
+                </li>
+            {% empty %}
+                <li class="category-item">
+                    <p>No categories available.</p>
+                </li>
+            {% endfor %}
         </ul>
         <div class="category-footer">
-            <p>All Rights Reserved by <a href="{% url 'products:product_list' %}">Transdigital System</a></p>
+            <p>All Rights Reserved by <a href="{% url 'products:index' %}">Transdigital System</a></p>
         </div>
     </aside>
     <!--=====================================
                 CATEGORY SIDEBAR PART END
-        =======================================-->
+    =======================================-->
 
     <!--=====================================
-                  CART SIDEBAR PART START
-        =======================================-->
+                CART SIDEBAR PART START
+    =======================================-->
+    <!--=====================================
+                CART SIDEBAR PART START
+    =======================================-->
     <aside class="cart-sidebar">
         <div class="cart-header">
             <div class="cart-total">
@@ -316,23 +212,25 @@
                 {% for item in cart_items %}
                     <li class="cart-item">
                         <div class="cart-media">
-                            <a href="{% url 'products:product_detail' pk=item.product.pk %}">
-                                <img src="{{ item.product.image.url|default:'/static/images/product/surgical-tool.jpg' }}" alt="{{ item.product.name }}">
+                            <a href="{% url 'products:product_detail' item.id %}">
+                                <img src="{{ item.image }}" alt="{{ item.name }}">
                             </a>
-                            <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
+                            <a href="{% url 'products:remove_from_cart' item.id %}" class="cart-delete">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
                         </div>
                         <div class="cart-info-group">
                             <div class="cart-info">
-                                <h6><a href="{% url 'products:product_detail' pk=item.product.pk %}">{{ item.product.name }}</a></h6>
-                                <p>Unit Price - KES {{ item.product.price|floatformat:2 }}</p>
+                                <h6><a href="{% url 'products:product_detail' item.id %}">{{ item.name }}</a></h6>
+                                <p>Unit Price - KES {{ item.price|floatformat:2 }}</p>
                             </div>
                             <div class="cart-action-group">
                                 <div class="product-action">
                                     <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{ item.quantity }}">
+                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{ item.quantity }}" readonly>
                                     <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                                 </div>
-                                <h6>KES {{ item.total_price|floatformat:2 }}</h6>
+                                
                             </div>
                         </div>
                     </li>
@@ -350,25 +248,28 @@
                     <input type="text" placeholder="Enter your coupon code">
                     <button type="submit"><span>apply</span></button>
                 </form>
-                <a class="cart-checkout-btn" href="#">
+                
                     <span class="checkout-label">Proceed to Checkout</span>
                     <span class="checkout-price">KES {{ cart_total|floatformat:2 }}</span>
-                </a> <!-- Placeholder: Add checkout URL pattern -->
+                </a>
             {% else %}
                 <p>No items to checkout.</p>
             {% endif %}
         </div>
     </aside>
     <!--=====================================
-                    CART SIDEBAR PART END
-        =======================================-->
+                CART SIDEBAR PART END
+    =======================================-->
+    <!--=====================================
+                CART SIDEBAR PART END
+    =======================================-->
 
     <!--=====================================
-                  NAV SIDEBAR PART START
-        =======================================-->
+                NAV SIDEBAR PART START
+    =======================================-->
     <aside class="nav-sidebar">
         <div class="nav-header">
-            <a href="{% url 'products:product_list' %}"><img src="{% static 'images/TG logo.png' %}" alt="TG Logo"></a>
+            <a href="{% url 'products:index' %}"><img src="{% static 'images/TG logo.png' %}" alt="TG Logo"></a>
             <button class="nav-close"><i class="icofont-close"></i></button>
         </div>
         <div class="nav-content">
@@ -376,7 +277,7 @@
                 <a href="#" class="btn btn-inline">
                     <i class="fa fa-unlock-alt"></i>
                     <span>Sign In</span>
-                </a> <!-- Placeholder: Add login URL pattern -->
+                </a>
             </div>
             <div class="nav-select-group">
                 <div class="nav-select">
@@ -393,11 +294,11 @@
                 </div>
             </div>
             <ul class="nav-list">
-                <li><a class="nav-link" href="{% url 'products:product_list' %}"><i class="icofont-home"></i>Home</a></li>
+                <li><a class="nav-link" href="{% url 'products:index' %}"><i class="icofont-home"></i>Home</a></li>
                 <li><a class="nav-link" href="{% url 'products:product_list' %}"><i class="icofont-food-cart"></i>Medical Products</a></li>
                 <li><a class="nav-link" href="{% url 'products:category_list' %}"><i class="icofont-page"></i>Categories</a></li>
                 <li><a class="nav-link" href="{% url 'products:brand_list' %}"><i class="icofont-brand"></i>Brands</a></li>
-                <li><a class="nav-link" href="#"><i class="icofont-bag-alt"></i>Orders</a></li> <!-- Placeholder: Add orders URL -->
+                <li><a class="nav-link" href="{% url 'products:view_cart' %}"><i class="fas fa-shopping-cart"></i>Cart</a></li>
             </ul>
             <div class="nav-info-group">
                 <div class="nav-info">
@@ -416,19 +317,19 @@
                 </div>
             </div>
             <div class="nav-footer">
-                <p>All Rights Reserved by <a href="{% url 'products:product_list' %}">Transdigital System</a></p>
+                <p>All Rights Reserved by <a href="{% url 'products:index' %}">Transdigital System</a></p>
             </div>
         </div>
     </aside>
     <!--=====================================
-                  NAV SIDEBAR PART END
-        =======================================-->
+                NAV SIDEBAR PART END
+    =======================================-->
 
     <!--=====================================
-                    MOBILE-MENU PART START
-        =======================================-->
+                MOBILE-MENU PART START
+    =======================================-->
     <div class="mobile-menu">
-        <a href="{% url 'products:product_list' %}" title="Home Page">
+        <a href="{% url 'products:index' %}" title="Home Page">
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
@@ -443,14 +344,28 @@
         </button>
     </div>
     <!--=====================================
-                    MOBILE-MENU PART END
-        =======================================-->
+                MOBILE-MENU PART END
+    =======================================-->
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Content -->
     {% block body %}
     {% endblock body %}
 
     <!--=====================================
-                    INTRO PART START
-        =======================================-->
+                INTRO PART START
+    =======================================-->
     <section class="intro-part">
         <div class="container">
             <div class="row intro-content">
@@ -502,25 +417,25 @@
         </div>
     </section>
     <!--=====================================
-                    INTRO PART END
-        =======================================-->
+                INTRO PART END
+    =======================================-->
 
     <!--=====================================
-                     FOOTER PART START
-        =======================================-->
+                FOOTER PART START
+    =======================================-->
     <footer class="footer-part">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-xl-3">
                     <div class="footer-widget">
-                        <a class="footer-logo" href="{% url 'products:product_list' %}">
+                        <a class="footer-logo" href="{% url 'products:index' %}">
                             <img src="{% static 'images/TG logo.png' %}" alt="TG Logo">
                         </a>
                         <ul class="footer-social">
-                            <li><a class="icofont-facebook" href="{{info.fb_link}}"></a></li>
-                            <li><a class="icofont-twitter" href="{{info.twit_link}}"></a></li>
-                            <li><a class="icofont-linkedin" href="{{info.linkedin_link}}"></a></li>
-                            <li><a class="icofont-instagram" href="{{info.insta_link}}"></a></li>
+                            <li><a class="icofont-facebook" href="#"></a></li>
+                            <li><a class="icofont-twitter" href="#"></a></li>
+                            <li><a class="icofont-linkedin" href="#"></a></li>
+                            <li><a class="icofont-instagram" href="#"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -542,7 +457,7 @@
                             </li>
                             <li>
                                 <i class="icofont-location-pin"></i>
-                                <p>{{info.address}}</p>
+                                <p>Nairobi, Kenya</p>
                             </li>
                         </ul>
                     </div>
@@ -552,10 +467,10 @@
                         <h3 class="footer-title">Quick Links</h3>
                         <div class="footer-links">
                             <ul>
-                                <li><a href="#">My Account</a></li> <!-- Placeholder -->
-                                <li><a href="#">Order History</a></li> <!-- Placeholder -->
-                                <li><a href="#">Order Tracking</a></li> <!-- Placeholder -->
-                                <li><a href="#">New Arrivals</a></li> <!-- Placeholder -->
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Order History</a></li>
+                                <li><a href="#">Order Tracking</a></li>
+                                <li><a href="#">New Arrivals</a></li>
                                 <li><a href="{% url 'products:brand_list' %}">Top Brands</a></li>
                             </ul>
                         </div>
@@ -575,7 +490,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="footer-bottom">
-                        <p class="footer-copytext">&copy; All Rights Reserved by <a href="{% url 'products:product_list' %}">Transdigital System</a></p>
+                        <p class="footer-copytext">&copy; All Rights Reserved by <a href="{% url 'products:index' %}">Transdigital System</a></p>
                         <div class="footer-card">
                             <a href="#"><img src="{% static 'images/payment/jpg/01.jpg' %}" alt="payment"></a>
                             <a href="#"><img src="{% static 'images/payment/jpg/02.jpg' %}" alt="payment"></a>
@@ -588,32 +503,29 @@
         </div>
     </footer>
     <!--=====================================
-                      FOOTER PART END
-        =======================================-->
+                FOOTER PART END
+    =======================================-->
 
     <!--=====================================
-                    JS LINK PART START
-        =======================================-->
-    <!-- VENDOR -->
+                JS LINK PART START
+    =======================================-->
     <script src="{% static 'vendor/bootstrap/jquery-1.12.4.min.js' %}"></script>
-    <script src="% static 'vendor/bootstrap/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/popper.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/bootstrap.min.js' %}"></script>
     <script src="{% static 'vendor/countdown/countdown.min.js' %}"></script>
     <script src="{% static 'vendor/niceselect/nice-select.min.js' %}"></script>
     <script src="{% static 'vendor/slickslider/slick.min.js' %}"></script>
     <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
-
-    <!-- CUSTOM -->
     <script src="{% static 'js/nice-select.js' %}"></script>
     <script src="{% static 'js/countdown.js' %}"></script>
     <script src="{% static 'js/accordion.js' %}"></script>
     <script src="{% static 'js/venobox.js' %}"></script>
     <script src="{% static 'js/slick.js' %}"></script>
-    {% block CSS-brand_list %}  {% endblock CSS-brand_list %}
     <script src="{% static 'js/main.js' %}"></script>
+    {% block js %}
+    {% endblock js %}
     <!--=====================================
-                    JS LINK PART END
-        =======================================-->
+                JS LINK PART END
+    =======================================-->
 </body>
-
 </html>

@@ -1,9 +1,105 @@
+{% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
-    <h1>Welcome to Transdigital System</h1>
-    <p>Contact us at <a href="mailto:Transdigitalke@gmail.com">Transdigitalke@gmail.com</a> or +254720957180</p>
-    <a href="{% url 'products:product_list' %}">Home</a>
-    <a href="{% url 'products:category_list' %}">Categories</a>
-    <a href="{% url 'products:brand_list' %}">Brands</a>
-{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/index-hospital.css' %}">
+{% endblock css %}
+
+{% block body %}
+    <!--=====================================
+                BANNER PART START
+    =======================================-->
+    <section class="inner-section single-banner" style="background: url({% static 'images/single-banner.jpg' %}) no-repeat center;">
+        <div class="container">
+            <h2>Welcome to Transdigital System</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+                <li class="breadcrumb-item"><a href="{% url 'products:product_list' %}">Shop</a></li>
+            </ol>
+        </div>
+    </section>
+    <!--=====================================
+                BANNER PART END
+    =======================================-->
+
+    <!--=====================================
+                INTRO PART START
+    =======================================-->
+    <section class="inner-section">
+        <div class="container">
+            <h1>Welcome to Transdigital System</h1>
+            <p>Contact us at <a href="mailto:Transdigitalke@gmail.com">Transdigitalke@gmail.com</a> or +254720957180</p>
+            <nav>
+                <a href="{% url 'products:index' %}" class="btn btn-inline">Home</a>
+                <a href="{% url 'products:product_list' %}" class="btn btn-inline">Shop</a>
+                <a href="{% url 'products:category_list' %}" class="btn btn-inline">Categories</a>
+                <a href="{% url 'products:brand_list' %}" class="btn btn-inline">Brands</a>
+                <a href="{% url 'products:view_cart' %}" class="btn btn-inline">Cart ({{ cart_item_count }})</a>
+            </nav>
+        </div>
+    </section>
+    <!--=====================================
+                INTRO PART END
+    =======================================-->
+
+    <!--=====================================
+                FEATURED PRODUCTS PART START
+    =======================================-->
+    <section class="inner-section shop-part">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Featured Products</h2>
+            </div>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4">
+                {% for product in featured_products %}
+                    <div class="col">
+                        <div class="product-card">
+                            <div class="product-media">
+                                <div class="product-label">
+                                    <label class="label-text new">new</label>
+                                </div>
+                                <button class="product-wish wish">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <a class="product-image" href="{% url 'products:product_detail' product.id %}">
+                                    {% if product.image %}
+                                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    {% else %}
+                                        <img src="{% static 'images/product/surgical-tool.jpg' %}" alt="default">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-name">
+                                    <a href="{% url 'products:product_detail' product.id %}">{{ product.name }}</a>
+                                </h6>
+                                <h6 class="product-price">
+                                    <span>KES {{ product.price|floatformat:2 }}</span>
+                                </h6>
+                                <a href="{% url 'products:add_to_cart' product.id %}" class="product-add" title="Add to Cart">
+                                    <i class="fas fa-shopping-basket"></i>
+                                    <span>add</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No featured products available at the moment.</p>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-btn-25">
+                        <a href="{% url 'products:product_list' %}" class="btn btn-outline">
+                            <i class="fas fa-eye"></i>
+                            <span>View All Products</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=====================================
+                FEATURED PRODUCTS PART END
+    =======================================-->
+{% endblock body %}
