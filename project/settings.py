@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-fallback-secret-key')
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'e-commerce-lnol.onrender.com']
 
 # Installed apps
 INSTALLED_APPS = [
@@ -184,3 +184,4 @@ if os.getenv('RENDER') != 'true':
         'filename': LOGS_DIR / 'django.log',
     }
     LOGGING['loggers']['django']['handlers'].append('file')
+
