@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - TechGadgets Review{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header text-center">
+    <div class="container">
+        <h1 class="fw-bold">About TechGadgets Review</h1>
+        <p class="text-muted">Your trusted source for honest and in-depth technology reviews and comparisons.</p>
+    </div>
+</div>
+
+<!-- Company Info Section -->
+<div class="content-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="/static/images/office.jpg" class="img-fluid rounded shadow" alt="Our Office">
+            </div>
+            <div class="col-md-6">
+                <h2>Who We Are</h2>
+                <p>TechGadgets Review is a team of passionate tech enthusiasts and experts dedicated to providing in-depth reviews, comparisons, and buying guides for the latest gadgets. Our goal is to help users make informed decisions when purchasing tech products.</p>
+                <p>We cover smartphones, laptops, headphones, smartwatches, gaming devices, and more. Our team tests and reviews every product to ensure you get honest opinions and accurate information.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Our Mission Section -->
+<div class="content-section py-5 bg-light">
+    <div class="container text-center">
+        <h2>Our Mission</h2>
+        <p class="lead">To empower tech enthusiasts and consumers with reliable reviews, comparisons, and expert insights, helping them make the best purchasing decisions.</p>
+    </div>
+</div>
+
+<!-- Team Section -->
+<div class="content-section py-5">
+    <div class="container text-center">
+        <h2>Meet Our Team</h2>
+        <p class="text-muted mb-5">A group of passionate professionals behind TechGadgets Review.</p>
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 shadow-sm">
+                    <img src="/static/images/team1.jpg" class="card-img-top" alt="Team Member 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Alice Johnson</h5>
+                        <p class="card-text text-muted">Lead Reviewer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 shadow-sm">
+                    <img src="/static/images/team2.jpg" class="card-img-top" alt="Team Member 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Bob Smith</h5>
+                        <p class="card-text text-muted">Tech Analyst</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 shadow-sm">
+                    <img src="/static/images/team3.jpg" class="card-img-top" alt="Team Member 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Carol Lee</h5>
+                        <p class="card-text text-muted">Content Strategist</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 shadow-sm">
+                    <img src="/static/images/team4.jpg" class="card-img-top" alt="Team Member 4">
+                    <div class="card-body">
+                        <h5 class="card-title">David Brown</h5>
+                        <p class="card-text text-muted">Marketing Lead</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action Section -->
+<div class="content-section py-5 bg-secondary text-white text-center">
+    <div class="container">
+        <h2>Stay Updated with TechGadgets Review</h2>
+        <p class="lead">Subscribe to our newsletter to get the latest reviews, deals, and gadget updates.</p>
+        <div class="d-flex justify-content-center mt-3">
+            <input type="email" id="newsletter-email" class="form-control w-50 me-2" placeholder="Enter your email">
+            <button class="btn btn-accent" onclick="subscribeNewsletter()">Subscribe</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

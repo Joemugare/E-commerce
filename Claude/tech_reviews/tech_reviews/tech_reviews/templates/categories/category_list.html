@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-4">
+    <h2 class="mb-3">Product Categories</h2>
+    <p>Browse reviews by technology category</p>
+
+    <div class="row">
+        {% for category in categories %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    {% if category.image %}
+                        <img src="{{ category.image.url }}" class="card-img-top" alt="{{ category.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{% url 'categories:category_detail' category.slug %}">
+                                {{ category.name }}
+                            </a>
+                        </h5>
+                        {% if category.description %}
+                            <p class="card-text">{{ category.description|truncatewords:20 }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'categories:category_detail' category.slug %}" class="btn btn-primary btn-sm">
+                            Reviews
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No categories available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

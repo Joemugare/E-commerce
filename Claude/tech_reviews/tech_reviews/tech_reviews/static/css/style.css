@@ -1,0 +1,72 @@
+/* Add this to your existing CSS file (e.g., static/css/style.css) */
+
+/* ==============================================
+   PRODUCT IMAGE SIZING - Add at the end of file
+   ============================================== */
+
+/* Product cards in grid/list view */
+.product-card img,
+.product-image {
+    width: 100px !important;          /* Set fixed width */
+    height: 100px !important;         /* Set fixed height */
+    object-fit: cover;     /* Crop image to fit without distortion */
+    border-radius: 8px;    /* Optional: rounded corners */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect */
+.product-card img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* For product grid layout */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Responsive sizes */
+@media (max-width: 768px) {
+    .product-card img,
+    .product-image {
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card img,
+    .product-image {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+}

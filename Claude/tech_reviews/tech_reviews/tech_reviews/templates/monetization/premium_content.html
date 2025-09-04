@@ -1,0 +1,460 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Content - TechGadgets Review</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .premium-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            opacity: 0.1;
+            border-radius: 0 0 0 100px;
+        }
+
+        .premium-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .btn-accent {
+            background: var(--accent-color);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .premium-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .premium-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .locked-content {
+            filter: blur(5px);
+            position: relative;
+        }
+
+        .locked-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <div class="logo">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                TechGadgets Review
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#reviews">Reviews</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../index.html#smartphones">Smartphones</a></li>
+                            <li><a class="dropdown-item" href="../index.html#laptops">Laptops</a></li>
+                            <li><a class="dropdown-item" href="../index.html#headphones">Headphones</a></li>
+                            <li><a class="dropdown-item" href="../index.html#smartwatches">Smart Watches</a></li>
+                            <li><a class="dropdown-item" href="../index.html#gaming">Gaming</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#compare">Compare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#deals">Deals</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Monetization
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ad_dashboard.html">Ad Dashboard</a></li>
+                            <li><a class="dropdown-item" href="affiliate_products.html">Affiliate Products</a></li>
+                            <li><a class="dropdown-item active" href="premium_content.html">Premium Content</a></li>
+                            <li><a class="dropdown-item" href="purchase_premium.html">Purchase Premium</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#search"><i class="fas fa-search"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-accent ms-2" href="#register">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Premium Content</h1>
+            <p class="lead">Access exclusive reviews, in-depth analysis, and early product insights</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="container">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="mb-4">Why Go Premium?</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="premium-feature justify-content-center text-center">
+                            <div class="premium-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h5>Exclusive Reviews</h5>
+                                <p class="small">Get access to reviews before they're published publicly</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="premium-feature justify-content-center text-center">
+                            <div class="premium-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h5>In-Depth Analysis</h5>
+                                <p class="small">Detailed technical analysis and performance benchmarks</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="premium-feature justify-content-center text-center">
+                            <div class="premium-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div>
+                                <h5>Video Content</h5>
+                                <p class="small">Exclusive video reviews and behind-the-scenes content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="purchase_premium.html" class="btn btn-accent btn-lg mt-4">Upgrade to Premium</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="premium-card">
+                    <span class="premium-badge">Premium</span>
+                    <h3>iPhone 16 Pro Detailed Teardown</h3>
+                    <p class="text-muted">Posted: September 15, 2024</p>
+                    <p>Get an exclusive first look at Apple's upcoming flagship with our detailed component analysis and performance predictions.</p>
+                    <div class="locked-content">
+                        <p>Our teardown reveals that the iPhone 16 Pro will feature a new titanium alloy frame that's 15% lighter than previous models. The A18 Bionic chip shows a 20% performance improvement in early benchmarks, with significantly improved thermal management.</p>
+                        <p>The camera system has been completely redesigned with a new periscope lens offering 10x optical zoom, a first for iPhone. Battery capacity has increased to 4500mAh, which combined with the more efficient chipset should result in 2+ hours of additional screen-on time.</p>
+                        <h5>Performance Benchmarks</h5>
+                        <ul>
+                            <li>Geekbench 6: 2450 single-core, 9850 multi-core</li>
+                            <li>3DMark Wild Life: 14500 points</li>
+                            <li>Battery life: 14 hours video playback</li>
+                        </ul>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock fa-2x mb-2"></i>
+                        <p>Premium content unlocked</p>
+                        <a href="purchase_premium.html" class="btn btn-accent btn-sm">Upgrade to Access</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="premium-card">
+                    <span class="premium-badge">Premium</span>
+                    <h3>Windows 12 Insider Preview</h3>
+                    <p class="text-muted">Posted: September 10, 2024</p>
+                    <p>Early access review of Microsoft's next-generation operating system with exclusive benchmarks and feature analysis.</p>
+                    <div class="locked-content">
+                        <p>Our testing of Windows 12 Build 23452 shows significant performance improvements in memory management and task scheduling. The new AI-powered interface adapts to your workflow, with contextual menus that change based on what you're working on.</p>
+                        <p>Gaming performance sees a notable 15% average improvement in DirectX 12 Ultimate titles, with reduced load times thanks to the new storage stack optimization. Battery life on laptops has improved by up to 25% in our testing.</p>
+                        <h5>Key New Features</h5>
+                        <ul>
+                            <li>AI-powered taskbar and start menu</li>
+                            <li>Enhanced Snap Layouts with suggestion engine</li>
+                            <li>Revamped File Explorer with tabs and tags</li>
+                            <li>New security center with real-time threat monitoring</li>
+                        </ul>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock fa-2x mb-2"></i>
+                        <p>Premium content unlocked</p>
+                        <a href="purchase_premium.html" class="btn btn-accent btn-sm">Upgrade to Access</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="premium-card">
+                    <span class="premium-badge">Premium</span>
+                    <h3>NVIDIA RTX 5090 Early Benchmarks</h3>
+                    <p class="text-muted">Posted: September 5, 2024</p>
+                    <p>Exclusive performance testing of NVIDIA's upcoming flagship GPU based on the Blackwell architecture.</p>
+                    <div class="locked-content">
+                        <p>Our engineering sample of the RTX 5090 shows a massive 65% performance uplift over the RTX 4090 in rasterization performance, with even greater gains in ray tracing workloads. The new architecture features 50% more CUDA cores and a significantly improved AI tensor core design.</p>
+                        <p>Memory bandwidth has been increased to 1.5TB/s thanks to the new GDDR7 memory running at 32Gbps. Power consumption remains similar to the 4090 at 450W, but with much better thermal performance due to the new vapor chamber cooling solution.</p>
+                        <h5>Game Performance (4K Ultra)</h5>
+                        <ul>
+                            <li>Cyberpunk 2077: 145 FPS (with Ray Reconstruction)</li>
+                            <li>Microsoft Flight Simulator: 112 FPS</li>
+                            <li>Alan Wake 2: 98 FPS (with Path Tracing)</li>
+                            <li>Call of Duty: Modern Warfare III: 187 FPS</li>
+                        </ul>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock fa-2x mb-2"></i>
+                        <p>Premium content unlocked</p>
+                        <a href="purchase_premium.html" class="btn btn-accent btn-sm">Upgrade to Access</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="premium-card">
+                    <span class="premium-badge">Premium</span>
+                    <h3>Samsung Galaxy S25 Ultra Camera Analysis</h3>
+                    <p class="text-muted">Posted: August 28, 2024</p>
+                    <p>Deep dive into Samsung's next camera system with sample images and video analysis.</p>
+                    <div class="locked-content">
+                        <p>Our early testing of the Galaxy S25 Ultra's camera system reveals a completely new 250MP sensor with larger 2.0μm pixels after binning. The new periscope telephoto now offers 15x optical zoom with improved optical image stabilization.</p>
+                        <p>Low-light performance has seen significant improvements, with noise reduction algorithms that preserve more detail while eliminating grain. Video recording now supports 8K at 60fps with improved stabilization and HDR10+ support.</p>
+                        <h5>Camera Specifications</h5>
+                        <ul>
+                            <li>Main: 250MP ISOCELL HP3, f/1.7, OIS</li>
+                            <li>Ultra-wide: 48MP, f/2.2, 120° FOV</li>
+                            <li>Telephoto 1: 50MP, 3x optical, f/2.4</li>
+                            <li>Telephoto 2: 50MP, 10x optical, f/3.5</li>
+                            <li>Front: 40MP, f/2.2, AF with PDAF</li>
+                        </ul>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock fa-2x mb-2"></i>
+                        <p>Premium content unlocked</p>
+                        <a href="purchase_premium.html" class="btn btn-accent btn-sm">Upgrade to Access</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="logo me-3">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h4>TechGadgets Review</h4>
+                    </div>
+                    <p>Your trusted source for honest, in-depth technology reviews and comparisons to help you make informed decisions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Reviews</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="../index.html#smartphones">Smartphones</a></li>
+                        <li><a href="../index.html#laptops">Laptops</a></li>
+                        <li><a href="../index.html#headphones">Headphones</a></li>
+                        <li><a href="../index.html#smartwatches">Smart Watches</a></li>
+                        <li><a href="../index.html#gaming">Gaming</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Features</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="../index.html#compare">Compare</a></li>
+                        <li><a href="../index.html#deals">Deals</a></li>
+                        <li><a href="#">Price Tracker</a></li>
+                        <li><a href="#">Video Reviews</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Company</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5>Support</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 TechGadgets Review. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> for tech enthusiasts</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

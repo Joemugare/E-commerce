@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2169399263370531"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D8Y7XV2YWQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-D8Y7XV2YWQ');
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechGadgets Review offers expert, in-depth reviews and comparisons of the latest tech gadgets.">
+    <meta name="keywords" content="tech reviews, gadget reviews, smartphones, laptops, headphones, smartwatches, gaming">
+    <meta name="author" content="TechGadgets Review">
+    <title>{% block title %}TechGadgets Review - Expert Gadget Reviews & Comparisons{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/static/images/logo2.png">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding-top: 80px; /* Account for fixed navbar */
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .search-bar .input-group {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .search-bar input {
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+        }
+        .search-bar button {
+            background: var(--accent-color);
+            border: none;
+            padding: 15px 25px;
+        }
+        .features-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        .trending-section {
+            padding: 80px 0;
+        }
+        .trending-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .trending-card:hover {
+            transform: translateY(-5px);
+        }
+        .trending-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        .rating {
+            color: #ffc107;
+        }
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .stats-section {
+            background: var(--accent-color);
+            color: white;
+            padding: 60px 0;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+        .comparison-tool {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+        .btn-primary {
+            background: var(--secondary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+        .btn-accent {
+            background: var(--accent-color);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin: 0 5px;
+            transition: background 0.3s ease;
+            color: white;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            background: var(--secondary-color);
+        }
+        
+        /* Additional styles for content pages */
+        .page-header {
+            background: var(--bg-light);
+            padding: 4rem 0 2rem;
+            margin-bottom: 2rem;
+        }
+        .content-section {
+            padding: 2rem 0;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ==============================================
+           PRODUCT IMAGE STYLES - Added Here
+           ============================================== */
+
+        /* Product cards in grid/list view */
+        .product-card img,
+        .product-image,
+        .product-list img {
+            width: 180px !important;          /* Set fixed width */
+            height: 180px !important;         /* Set fixed height */
+            object-fit: cover;                /* Crop image to fit without distortion */
+            border-radius: 8px;               /* Optional: rounded corners */
+            transition: transform 0.3s ease;  /* Smooth hover effect */
+            display: block;
+            margin: 0 auto 15px auto;         /* Center the image */
+        }
+
+        /* Hover effect */
+        .product-card img:hover,
+        .product-image:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        /* For product grid layout */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Product title styling */
+        .product-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 15px 0 10px 0;
+            line-height: 1.4;
+            color: var(--text-dark);
+            min-height: 45px; /* Consistent height for alignment */
+        }
+
+        /* Product price styling */
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 10px 0;
+        }
+
+        /* Product description */
+        .product-description {
+            font-size: 14px;
+            color: var(--text-light);
+            margin: 10px 0;
+            line-height: 1.4;
+            min-height: 40px; /* Consistent height */
+        }
+
+        /* No image placeholder */
+        .no-image {
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 14px;
+            border: 2px dashed #dee2e6;
+        }
+
+        /* Product actions/buttons */
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .product-actions .btn {
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        /* Responsive sizes */
+        @media (max-width: 768px) {
+            .product-card img,
+            .product-image,
+            .product-list img {
+                width: 150px !important;
+                height: 150px !important;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .product-card {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-card img,
+            .product-image,
+            .product-list img {
+                width: 120px !important;
+                height: 120px !important;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+                padding: 10px;
+            }
+
+            .product-title {
+                font-size: 14px;
+                min-height: 35px;
+            }
+
+            .product-price {
+                font-size: 18px;
+            }
+        }
+
+        /* List view styling (horizontal layout) */
+        .product-list-view .product-card {
+            display: flex;
+            text-align: left;
+            padding: 20px;
+        }
+
+        .product-list-view .product-card img {
+            width: 100px !important;
+            height: 100px !important;
+            margin: 0 20px 0 0;
+            flex-shrink: 0;
+        }
+
+        .product-list-view .product-info {
+            flex-grow: 1;
+        }
+
+        /* Category filter styling */
+        .category-filter {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .category-filter .btn {
+            margin: 5px;
+            font-size: 14px;
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <div class="logo">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                TechGadgets Review
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:review_list' %}">Reviews</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'categories:category_list' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'categories:category_list' %}?category=smartphones">Smartphones</a></li>
+                            <li><a class="dropdown-item" href="{% url 'categories:category_list' %}?category=laptops">Laptops</a></li>
+                            <li><a class="dropdown-item" href="{% url 'categories:category_list' %}?category=headphones">Headphones</a></li>
+                            <li><a class="dropdown-item" href="{% url 'categories:category_list' %}?category=smartwatches">Smart Watches</a></li>
+                            <li><a class="dropdown-item" href="{% url 'categories:category_list' %}?category=gaming">Gaming</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'compare:compare_list' %}">Compare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'deals:deal_list' %}">Deals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products:product_list' %}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about:about' %}">About</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#search"><i class="fas fa-search"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-accent ms-2" href="{% url 'users:register' %}">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    {% block content %}
+    <!-- Content from child templates will be inserted here -->
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="logo me-3">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h4>TechGadgets Review</h4>
+                    </div>
+                    <p>Your trusted source for honest, in-depth technology reviews and comparisons to help you make informed decisions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Reviews</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="{% url 'categories:category_list' %}?category=smartphones">Smartphones</a></li>
+                        <li><a href="{% url 'categories:category_list' %}?category=laptops">Laptops</a></li>
+                        <li><a href="{% url 'categories:category_list' %}?category=headphones">Headphones</a></li>
+                        <li><a href="{% url 'categories:category_list' %}?category=smartwatches">Smart Watches</a></li>
+                        <li><a href="{% url 'categories:category_list' %}?category=gaming">Gaming</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Features</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="{% url 'compare:compare_list' %}">Compare</a></li>
+                        <li><a href="{% url 'deals:deal_list' %}">Deals</a></li>
+                        <li><a href="#price-tracker">Price Tracker</a></li>
+                        <li><a href="#video-reviews">Video Reviews</a></li>
+                        <li><a href="#mobile-app">Mobile App</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Company</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="{% url 'about:about' %}">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#press">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5>Support</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#cookies">Cookie Policy</a></li>
+                        <li><a href="#sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 TechGadgets Review. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> for tech enthusiasts</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Newsletter subscription
+        function subscribeNewsletter() {
+            const email = document.querySelector('#newsletter-email').value;
+            if (email && email.includes('@')) {
+                alert(`Thank you for subscribing with email: ${email}`);
+                document.querySelector('#newsletter-email').value = '';
+            } else {
+                alert('Please enter a valid email address');
+            }
+        }
+
+        // Comparison tool functionality
+        function compareProducts() {
+            const gadget1 = document.querySelector('#compare-product-1').value;
+            const gadget2 = document.querySelector('#compare-product-2').value;
+            if (gadget1 !== "Select first gadget..." && gadget2 !== "Select second gadget...") {
+                // Redirect to comparison page
+                window.location.href = `/compare/?product1=${gadget1}&product2=${gadget2}`;
+            } else {
+                alert('Please select both gadgets to compare');
+            }
+        }
+
+        // Animate stats on scroll
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const finalText = stat.textContent;
+                const number = parseInt(finalText.replace(/\D/g, ''));
+                if (number && number > 0) {
+                    const suffix = finalText.replace(/\d/g, '');
+                    let current = 0;
+                    const increment = number / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= number) {
+                            stat.textContent = number + suffix;
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.floor(current) + suffix;
+                        }
+                    }, 30);
+                }
+            });
+        }
+
+        // Trigger stats animation when section is visible
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            observer.observe(statsSection);
+        }
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

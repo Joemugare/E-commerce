@@ -1,0 +1,428 @@
+{
+  "search_url": "https://www.newegg.com/p/pl?d=televisons&page=2",
+  "scraped_at": "2025-09-03 14:32:37",
+  "total_products": 20,
+  "search_query": "75in and larger TVs",
+  "products": [
+    {
+      "title": "Westinghouse WR43UX4210 4K Ultra HD Smart Roku TV with HDR10",
+      "price": "$239.99",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-826-994-02.jpg",
+      "product_url": "",
+      "brand": "Roku",
+      "model": "",
+      "key_features": [
+        "Color:Black",
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Model #:WR43UX4210"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "Westinghouse EX Series 50\" Edgeless 4K UHD Roku TV (WR50EX4300, 2024)",
+      "price": "$249.99",
+      "original_price": "",
+      "discount": "",
+      "rating": "5",
+      "reviews_count": "2",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-825-004-01.jpg",
+      "product_url": "",
+      "brand": "Roku",
+      "model": "",
+      "key_features": [
+        "Color:Black",
+        "TV Type:LED TV",
+        "Smart TV:Apple TV / Disney+ / Hulu / Netflix / Paramount+ / Roku TV / Youtube TV",
+        "Maximum Resolution:3840 x 2160",
+        "Model #:WR50EX4300"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO P55-E1 P-Series 55\" IPS 4K Ultra HD HDR Dolby Vision Chromecast built-in Smart TV (2017)",
+      "price": "$327.76",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/ACYN_1_201907101328713516.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Color:Black",
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Model #:P55-E1"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO E-Series 55\" 4K Ultra HD HDR Dolby Vision Chromecast built-in Smart TV E55-F1",
+      "price": "$327.76",
+      "original_price": "$377.76",
+      "discount": "Save:$50.00(13%)",
+      "rating": "4",
+      "reviews_count": "1",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-673-S01.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Color:N/A",
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Model #:E55-F1"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO E55-D0 SmartCast E-Series 55-Inch 1080p HD Smart LED TV",
+      "price": "$327.76",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-509-S01.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Maximum Resolution:1920 x 1080",
+        "Aspect Ratio:16:9",
+        "Viewing Angle:178°(H) / 178°(V)",
+        "Display Color:16.7 Million",
+        "Model #:E55-D0"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO 43-inch V-Series 4K LED HDR Smart TV w/ AMD FreeSync, Dolby Vision, WiFi 6E, & Smart Home Compatibility, V435M-K04 2023",
+      "price": "$261.10",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/A6ZPD23030803PZTJ5C.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Color:Black",
+        "TV Type:LED TV",
+        "Smart TV:WatchFree+",
+        "Aspect Ratio:16:9",
+        "Model #:V435M-K04"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "Vizio 55\" Class M-Series Quantum 4K HDR Smart TV, Black",
+      "price": "$572.21",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-798-S01.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Color:Black",
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "LED Technology:Full Array LED",
+        "Model #:M55Q7-J01"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO V-Series 65\" Class (64.5\" Diag.) 4K HDR Smart TV | V655-J09",
+      "price": "$456.65",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-792-S01.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Color:Black",
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Model #:V655-J09"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO V-Series 65\" Class 4K HDR Smart TV V655-G9 (2019)",
+      "price": "$456.65",
+      "original_price": "",
+      "discount": "",
+      "rating": "5",
+      "reviews_count": "4",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-723-V07.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Viewing Angle:178°(H) / 178°(V)",
+        "Model #:V655-G9"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "TCL 40\" CLASS 3-SERIES FHD LED Smart Android TV - 40S334",
+      "price": "$138.87",
+      "original_price": "",
+      "discount": "",
+      "rating": "5",
+      "reviews_count": "1",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/V1DSD22033014Y8AA58.jpg",
+      "product_url": "",
+      "brand": "TCL",
+      "model": "",
+      "key_features": [
+        "Color:Black",
+        "Smart TV:Yes",
+        "Maximum Resolution:1920 x 1080",
+        "Display Color:16.7 Million",
+        "Model #:40S334"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "Westinghouse EX Series 32\" Edgeless HD Roku TV (WR32EX2300, 2024)",
+      "price": "$149.99",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-825-001-01.jpg",
+      "product_url": "",
+      "brand": "Roku",
+      "model": "",
+      "key_features": [
+        "Color:Black",
+        "TV Type:LED TV",
+        "Smart TV:Apple TV / Disney+ / Google TV / Hulu / Netflix / Peacock / Prime Video / Roku TV / Spotify / Youtube TV",
+        "Maximum Resolution:1366 x 768",
+        "Model #:WR32EX2300"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "Vizio V-Series 55\" 4K Dynamic Motion Rate 120 LED TV V555-H11",
+      "price": "$438.87",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-780-S01.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "TV Type:LED TV",
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Model #:V555-H11"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "Vizio V-Series 65\" 4K Dynamic Motion Rate 120Hz LED TV V655-H19",
+      "price": "$638.87",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-778-S01.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "TV Type:LED TV",
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Model #:V655-H19"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO D-Series  SmartCast D-Series 24-Inch HD LED Smart TV D24f-F1",
+      "price": "$94.43",
+      "original_price": "",
+      "discount": "",
+      "rating": "2.8",
+      "reviews_count": "4",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-630-V14.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Smart TV:Yes",
+        "Maximum Resolution:1920 x 1080",
+        "Aspect Ratio:16:9",
+        "Viewing Angle:178°(H) / 178°(V)",
+        "Model #:D24F-F1"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "Vizio V-Series 50\" 4K Dynamic Motion Rate 120 LED TV V505-H19",
+      "price": "$572.21",
+      "original_price": "",
+      "discount": "",
+      "rating": "3",
+      "reviews_count": "3",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-779-S01.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "TV Type:LED TV",
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Model #:V505-H19"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO E65-E0 SmartCast E-Series 65-Inch 4K UHD XLED Smart TV with HDR",
+      "price": "$394.43",
+      "original_price": "$444.43",
+      "discount": "Save:$50.00(11%)",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-556-Z09.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Color:Black",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Viewing Angle:178°(H) / 178°(V)",
+        "Model #:E65-E0"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "Vizio M-Series 55\" 4K Motion Rate 120 Quantum HDR Smart TV M55Q7-H1",
+      "price": "$572.21",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-772-01.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Color:Black",
+        "TV Type:QLED TV",
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Model #:M55Q7-H1"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO E-Series E55u-D0 55-Inch 2160p Ultra HD SmartCast Home Theater Display - Black",
+      "price": "$327.76",
+      "original_price": "",
+      "discount": "",
+      "rating": "3",
+      "reviews_count": "6",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-510-01.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Viewing Angle:178°(H) / 178°(V)",
+        "Display Color:1.07 Billion",
+        "Model #:E55u-D0"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO E65-F0 E-Series 65\" 4K Ultra HD HDR Dolby Vision Chromecast Built-in Smart TV",
+      "price": "$427.76",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-678-S01.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Viewing Angle:178°(H) / 178°(V)",
+        "Model #:E65-F0"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    },
+    {
+      "title": "VIZIO M-Series 55\" 4K Ultra HD HDR Dolby Vision Chromecast built-in Smart TV M55-F0 (2018)",
+      "price": "$572.21",
+      "original_price": "",
+      "discount": "",
+      "rating": "",
+      "reviews_count": "",
+      "image_url": "https://c1.neweggimages.com/productimage/nb300/89-262-674-S07.jpg",
+      "product_url": "",
+      "brand": "VIZIO",
+      "model": "",
+      "key_features": [
+        "Smart TV:Yes",
+        "Maximum Resolution:3840 x 2160",
+        "Aspect Ratio:16:9",
+        "Panel:VA Panel",
+        "Model #:M55-F0"
+      ],
+      "shipping_info": "",
+      "in_stock": true
+    }
+  ]
+}

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Products - TechGadgets Review</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 3rem;
+        }
+
+        .product-body {
+            padding: 20px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .commission-badge {
+            background: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .btn-accent {
+            background: var(--accent-color);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .filter-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <div class="logo">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                TechGadgets Review
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#reviews">Reviews</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../index.html#smartphones">Smartphones</a></li>
+                            <li><a class="dropdown-item" href="../index.html#laptops">Laptops</a></li>
+                            <li><a class="dropdown-item" href="../index.html#headphones">Headphones</a></li>
+                            <li><a class="dropdown-item" href="../index.html#smartwatches">Smart Watches</a></li>
+                            <li><a class="dropdown-item" href="../index.html#gaming">Gaming</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#compare">Compare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#deals">Deals</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Monetization
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ad_dashboard.html">Ad Dashboard</a></li>
+                            <li><a class="dropdown-item active" href="affiliate_products.html">Affiliate Products</a></li>
+                            <li><a class="dropdown-item" href="premium_content.html">Premium Content</a></li>
+                            <li><a class="dropdown-item" href="purchase_premium.html">Purchase Premium</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#search"><i class="fas fa-search"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-accent ms-2" href="#register">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Affiliate Products</h1>
+            <p class="lead">Promote high-quality tech products and earn commissions</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="filter-card">
+                    <h4 class="mb-4">Filters</h4>
+                    <div class="mb-4">
+                        <h6>Category</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="smartphones" checked>
+                            <label class="form-check-label" for="smartphones">Smartphones</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="laptops" checked>
+                            <label class="form-check-label" for="laptops">Laptops</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="headphones">
+                            <label class="form-check-label" for="headphones">Headphones</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="smartwatches">
+                            <label class="form-check-label" for="smartwatches">Smart Watches</label>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h6>Commission Rate</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="commission" id="high" checked>
+                            <label class="form-check-label" for="high">High (5%+)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="commission" id="medium">
+                            <label class="form-check-label" for="medium">Medium (3-5%)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="commission" id="low">
+                            <label class="form-check-label" for="low">Low (1-3%)</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary w-100">Apply Filters</button>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="product-body">
+                                <h5>iPhone 15 Pro</h5>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="product-price">$999.00</span>
+                                    <span class="commission-badge">6.5%</span>
+                                </div>
+                                <p class="text-muted small">Latest iPhone with titanium design and powerful A17 Pro chip.</p>
+                                <button class="btn btn-primary w-100">Get Affiliate Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="product-body">
+                                <h5>MacBook Pro 16"</h5>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="product-price">$2,399.00</span>
+                                    <span class="commission-badge">4.5%</span>
+                                </div>
+                                <p class="text-muted small">Powerful laptop with M3 Pro chip for professionals.</p>
+                                <button class="btn btn-primary w-100">Get Affiliate Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="product-body">
+                                <h5>Sony WH-1000XM5</h5>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="product-price">$349.99</span>
+                                    <span class="commission-badge">7.0%</span>
+                                </div>
+                                <p class="text-muted small">Industry-leading noise canceling headphones.</p>
+                                <button class="btn btn-primary w-100">Get Affiliate Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-tablet-alt"></i>
+                            </div>
+                            <div class="product-body">
+                                <h5>iPad Pro 12.9"</h5>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="product-price">$1,099.00</span>
+                                    <span class="commission-badge">5.0%</span>
+                                </div>
+                                <p class="text-muted small">The ultimate iPad experience with M2 chip.</p>
+                                <button class="btn btn-primary w-100">Get Affiliate Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-watch"></i>
+                            </div>
+                            <div class="product-body">
+                                <h5>Apple Watch Ultra</h5>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="product-price">$799.00</span>
+                                    <span class="commission-badge">6.0%</span>
+                                </div>
+                                <p class="text-muted small">Advanced smartwatch for extreme adventures.</p>
+                                <button class="btn btn-primary w-100">Get Affiliate Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="product-body">
+                                <h5>Sony A7IV Camera</h5>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="product-price">$2,499.99</span>
+                                    <span class="commission-badge">8.0%</span>
+                                </div>
+                                <p class="text-muted small">Full-frame mirrorless camera for professionals.</p>
+                                <button class="btn btn-primary w-100">Get Affiliate Link</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="logo me-3">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h4>TechGadgets Review</h4>
+                    </div>
+                    <p>Your trusted source for honest, in-depth technology reviews and comparisons to help you make informed decisions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Reviews</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="../index.html#smartphones">Smartphones</a></li>
+                        <li><a href="../index.html#laptops">Laptops</a></li>
+                        <li><a href="../index.html#headphones">Headphones</a></li>
+                        <li><a href="../index.html#smartwatches">Smart Watches</a></li>
+                        <li><a href="../index.html#gaming">Gaming</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Features</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="../index.html#compare">Compare</a></li>
+                        <li><a href="../index.html#deals">Deals</a></li>
+                        <li><a href="#">Price Tracker</a></li>
+                        <li><a href="#">Video Reviews</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Company</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5>Support</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 TechGadgets Review. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> for tech enthusiasts</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Get Affiliate Link functionality
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-body').querySelector('h5').textContent;
+                alert(`Affiliate link for ${productName} copied to clipboard!`);
+            });
+        });
+    </script>
+</body>
+</html>

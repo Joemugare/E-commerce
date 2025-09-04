@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+
+{% block title %}TechGadgets Review - Expert Tech Reviews & Comparisons{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" id="home">
+    <div class="container">
+        <h1>Expert Tech Gadget Reviews</h1>
+        <p>Discover the latest gadgets with honest, in-depth reviews from tech experts</p>
+        <div class="search-bar">
+            <form action="{% url 'reviews:review_list' %}" method="get" class="input-group">
+                <input type="text" class="form-control" name="q" placeholder="Search for gadgets, brands, or reviews...">
+                <button class="btn btn-accent" type="submit">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+        <div class="mt-4">
+            <a href="#video-reviews" class="btn btn-outline-light me-3" data-bs-toggle="tooltip" title="Watch in-depth video reviews of the latest gadgets">
+                <i class="fas fa-play"></i> Watch Reviews
+            </a>
+            <a href="{% url 'reviews:review_list' %}?sort=rating" class="btn btn-light">
+                <i class="fas fa-star"></i> Top Rated
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Video Reviews Section -->
+<section class="video-reviews-section py-5" id="video-reviews">
+    <div class="container">
+        <h2 class="display-5 fw-bold text-center mb-4">Featured Video Reviews</h2>
+        <p class="lead text-center mb-5">Watch our latest hands-on gadget reviews</p>
+        <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for review in featured_video_reviews %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="video-container">
+                                <iframe src="{{ review.video_url|default:'https://www.youtube.com/embed/gmEY8agap48' }}" 
+                                        title="{{ review.title }}" 
+                                        frameborder="0" 
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ review.title }}</h4>
+                            <div class="rating mb-2">
+                                {% for i in "12345" %}
+                                    {% if forloop.counter <= review.rating %}
+                                        <i class="fas fa-star"></i>
+                                    {% else %}
+                                        <i class="far fa-star"></i>
+                                    {% endif %}
+                                {% endfor %}
+                                <span class="ms-1">{{ review.rating }}/5</span>
+                            </div>
+                            <p class="text-muted">{{ review.content|striptags|truncatewords:20 }}</p>
+                            <a href="{% url 'reviews:review_detail' review.id %}" class="btn btn-primary">Watch Full Review</a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="carousel-item active">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/gmEY8agap48" 
+                                        title="Latest Smartphone Review" 
+                                        frameborder="0" 
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Latest Smartphone Review</h4>
+                            <div class="rating mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="ms-1">4.5/5</span>
+                            </div>
+                            <p class="text-muted">Explore cutting-edge features in our in-depth smartphone review.</p>
+                            <a href="{% url 'reviews:review_list' %}?type=video" class="btn btn-primary">Watch Full Review</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/sample-video2" 
+                                        title="Sample Laptop Review" 
+                                        frameborder="0" 
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>MacBook Air M3 Video Review</h4>
+                            <div class="rating mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="ms-1">4.2/5</span>
+                            </div>
+                            <p class="text-muted">Explore the new M3 chip in our detailed video review.</p>
+                            <a href="{% url 'reviews:review_list' %}?type=video" class="btn btn-primary">Watch Full Review</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#videoCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'reviews:review_list' %}?type=video" class="btn btn-accent btn-lg">Explore All Video Reviews</a>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-6 fw-bold mb-4">Stay Updated</h2>
+                <p class="lead mb-4">Get the latest gadget reviews, deals, and tech news delivered to your inbox</p>
+                <form method="post" action="{% url 'newsletter_subscribe' %}">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control form-control-lg" id="newsletter-email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-accent btn-lg w-100">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
+                <small class="text-light mt-2 d-block">No spam, unsubscribe anytime. Join 50,000+ tech enthusiasts.</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <div class="stat-item">
+                    <span class="stat-number">{{ total_reviews|default:"150" }}+</span>
+                    <small>Gadgets Reviewed</small>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-item">
+                    <span class="stat-number">50K+</span>
+                    <small>Monthly Readers</small>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <small>Accuracy Rate</small>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <small>Expert Support</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section" id="features">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-5 fw-bold">Why Choose TechGadgets Review?</h2>
+                <p class="lead">We provide comprehensive, unbiased reviews to help you make the best tech decisions</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-microscope"></i></div>
+                    <h4>In-Depth Testing</h4>
+                    <p>Every gadget undergoes rigorous testing in real-world conditions for accurate assessments.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h4>Smart Comparisons</h4>
+                    <p>Compare gadgets side-by-side with our intelligent comparison tool and detailed specs.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-video"></i></div>
+                    <h4>Video Reviews</h4>
+                    <p>Watch detailed video reviews with hands-on demonstrations and performance tests.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-tags"></i></div>
+                    <h4>Price Tracking</h4>
+                    <p>Track price history and get alerts for deals on your favorite gadgets.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h4>Community Reviews</h4>
+                    <p>Read and share experiences with our active community of tech enthusiasts.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h4>Mobile App</h4>
+                    <p>Access reviews, comparisons, and deals on-the-go with our mobile app.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- JavaScript for Tooltips -->
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+</script>
+{% endblock %}

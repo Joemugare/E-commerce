@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | TechReviews</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --accent: #fd79a8;
+            --light: #f8f9fa;
+            --dark: #2d3436;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --info: #0984e3;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2d3436;
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .welcome-text {
+            font-weight: 300;
+        }
+        
+        .username {
+            font-weight: 700;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-text {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .quick-actions {
+            padding: 20px;
+        }
+        
+        .action-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+            border-radius: 8px;
+        }
+        
+        .action-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .action-item:last-child {
+            border-bottom: none;
+        }
+        
+        .action-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .action-text {
+            flex-grow: 1;
+        }
+        
+        .action-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .action-link:hover {
+            color: var(--primary);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #5649c5;
+            border-color: #5649c5;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .recent-activity {
+            padding: 20px;
+        }
+        
+        .activity-item {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1rem;
+            background-color: rgba(108, 92, 231, 0.1);
+            color: var(--primary);
+        }
+        
+        .activity-content {
+            flex-grow: 1;
+        }
+        
+        .activity-time {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        .profile-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .profile-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .profile-role {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .badge-premium {
+            background-color: var(--warning);
+            color: var(--dark);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+    <div class="dashboard-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="welcome-text">Welcome back,</h1>
+                    <h2 class="username">{{ user.username }}!</h2>
+                    <p class="mb-0">Here's what's happening with your account today.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <a href="{% url 'users:profile' %}" class="btn btn-light me-2">Edit Profile</a>
+                    <a href="{% url 'home' %}" class="btn btn-outline-light">Go to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <!-- Stats Overview -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card">
+                    <div class="stat-icon text-primary">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-number">24</div>
+                    <div class="stat-text">Reviews Written</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card">
+                    <div class="stat-icon text-success">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <div class="stat-number">7</div>
+                    <div class="stat-text">Deals Posted</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card">
+                    <div class="stat-icon text-info">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <div class="stat-number">143</div>
+                    <div class="stat-text">Helpful Votes</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card">
+                    <div class="stat-icon text-warning">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-number">3</div>
+                    <div class="stat-text">Achievements</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Quick Actions -->
+            <div class="col-lg-4">
+                <div class="card quick-actions">
+                    <h5 class="card-title mb-4">Quick Actions</h5>
+                    <div class="action-item">
+                        <div class="action-icon bg-primary text-white">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="action-text">
+                            <a href="{% url 'users:profile' %}" class="action-link">View and Edit Profile</a>
+                        </div>
+                        <i class="fas fa-chevron-right text-muted"></i>
+                    </div>
+                    <div class="action-item">
+                        <div class="action-icon bg-success text-white">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="action-text">
+                            <a href="{% url 'reviews:review_list' %}" class="action-link">Check Your Reviews</a>
+                        </div>
+                        <i class="fas fa-chevron-right text-muted"></i>
+                    </div>
+                    <div class="action-item">
+                        <div class="action-icon bg-info text-white">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <div class="action-text">
+                            <a href="{% url 'deals:deal_list' %}" class="action-link">Manage Your Deals</a>
+                        </div>
+                        <i class="fas fa-chevron-right text-muted"></i>
+                    </div>
+                    <div class="action-item">
+                        <div class="action-icon bg-warning text-white">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="action-text">
+                            <a href="#" class="action-link">Account Settings</a>
+                        </div>
+                        <i class="fas fa-chevron-right text-muted"></i>
+                    </div>
+                    <div class="action-item">
+                        <div class="action-icon bg-danger text-white">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
+                        <div class="action-text">
+                            <a href="{% url 'users:logout' %}" class="action-link">Logout</a>
+                        </div>
+                        <i class="fas fa-chevron-right text-muted"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="col-lg-8">
+                <div class="card recent-activity">
+                    <h5 class="card-title mb-4">Recent Activity</h5>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h6>You reviewed "Wireless Headphones"</h6>
+                            <p class="mb-1">Great sound quality and battery life!</p>
+                            <div class="activity-time">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h6>Your review received 5 helpful votes</h6>
+                            <p class="mb-1">Review: "Smart Watch Series 5"</p>
+                            <div class="activity-time">Yesterday</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h6>You posted a new deal</h6>
+                            <p class="mb-1">Wireless Earbuds - 25% off</p>
+                            <div class="activity-time">2 days ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h6>Earned the "Review Expert" badge</h6>
+                            <p class="mb-1">You've written 20+ reviews</p>
+                            <div class="activity-time">3 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <!-- Profile Summary -->
+            <div class="col-lg-4">
+                <div class="card profile-card">
+                    <img src="https://via.placeholder.com/150/6c5ce7/ffffff?text={{ user.username.0 }}" alt="Profile" class="profile-img">
+                    <h4 class="profile-name">{{ user.username }}</h4>
+                    <div class="profile-role">Tech Enthusiast</div>
+                    <div class="badge-premium mb-3">Premium Member</div>
+                    <p>Member since January 2023</p>
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'users:profile' %}" class="btn btn-primary">View Full Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-8">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">From your dashboard, you can:</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-3"><i class="fas fa-user text-primary me-2"></i> View and edit your <a href="{% url 'users:profile' %}">profile</a></li>
+                                    <li class="mb-3"><i class="fas fa-star text-success me-2"></i> Check your <a href="{% url 'reviews:review_list' %}">reviews</a></li>
+                                    <li class="mb-3"><i class="fas fa-tag text-info me-2"></i> Manage your <a href="{% url 'deals:deal_list' %}">deals</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-3"><i class="fas fa-cog text-warning me-2"></i> Update your <a href="#">account settings</a></li>
+                                    <li class="mb-3"><i class="fas fa-bell text-danger me-2"></i> Manage your <a href="#">notifications</a></li>
+                                    <li class="mb-3"><i class="fas fa-sign-out-alt text-secondary me-2"></i> Logout from your account <a href="{% url 'users:logout' %}">here</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="{% url 'home' %}" class="btn btn-secondary me-2">Go to Home</a>
+                            <a href="{% url 'products:product_list' %}" class="btn btn-outline-primary">Browse Products</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
